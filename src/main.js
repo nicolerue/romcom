@@ -14,9 +14,12 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-showNewBtn.addEventListener("click", function(){
-  
+showNewBtn.addEventListener("click", function() {
+  console.log(showRandomCover())
+  console.log(showRandomTitle())
+  console.log(showRandomDescriptors())
 })
+
 
 // Create your event handlers and other functions here 👇
 
@@ -35,4 +38,20 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
     tagline2: descriptor2
   }
   return cover
+}
+
+function showRandomCover() {
+  var randomCover = covers[getRandomIndex(covers)]
+    return randomCover;
+}
+
+function showRandomTitle() {
+  var randomTitle = titles[getRandomIndex(titles)]
+    return randomTitle
+}
+
+function showRandomDescriptors() {
+  var randomDescriptor1 = descriptors[getRandomIndex(descriptors)]
+  var randomDescriptor2 = descriptors[getRandomIndex(descriptors)]
+    return randomDescriptor1 + " " + randomDescriptor2
 }
