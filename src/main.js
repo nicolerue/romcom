@@ -11,13 +11,24 @@ var showNewBtn = document.querySelector('.random-cover-button')
 var savedCovers = [
   createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
-var currentCover;
+var currentCover
 
 // Add your event listeners here 👇
-showNewBtn.addEventListener("click", function() {
-  console.log(showRandomCover())
-  console.log(showRandomTitle())
-  console.log(showRandomDescriptors())
+showNewBtn.addEventListener("click", function(){
+  var randIndexCovers = getRandomIndex(covers);
+  var randIndexTitles = getRandomIndex(titles);
+  var randIndexDescriptors = getRandomIndex(descriptors);
+  var randCover = covers[randIndexCovers]
+  var randTitle = titles[randIndexTitles]
+  var randDesc1 = descriptors[randIndexDescriptors]
+  var randDesc2 = descriptors[randIndexDescriptors]
+  var newCover = createCover(randCover, randTitle, randDesc1, randDesc2)
+  mainCoverTitle.innerText = newCover.title;
+  mainCoverImg.src = randCover;
+  mainCoverTagline1.innerText = randDesc1;
+  mainCoverTagline2.innerText = randDesc2;
+
+  console.log(cover.title)
 })
 
 
@@ -40,18 +51,3 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
   return cover
 }
 
-function showRandomCover() {
-  var randomCover = covers[getRandomIndex(covers)]
-    return randomCover;
-}
-
-function showRandomTitle() {
-  var randomTitle = titles[getRandomIndex(titles)]
-    return randomTitle
-}
-
-function showRandomDescriptors() {
-  var randomDescriptor1 = descriptors[getRandomIndex(descriptors)]
-  var randomDescriptor2 = descriptors[getRandomIndex(descriptors)]
-    return randomDescriptor1 + " " + randomDescriptor2
-}
