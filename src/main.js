@@ -21,22 +21,15 @@ var currentCover;
 // Add your event listeners here 👇
 
 window.addEventListener("DOMContentLoaded", () => {
-  var randIndexCovers = getRandomIndex(covers);
-  var randIndexTitles = getRandomIndex(titles);
-  var randIndexDescriptors1 = getRandomIndex(descriptors);
-  var randIndexDescriptors2 = getRandomIndex(descriptors);
-  var randCover = covers[randIndexCovers];
-  var randTitle = titles[randIndexTitles];
-  var randDesc1 = descriptors[randIndexDescriptors1];
-  var randDesc2 = descriptors[randIndexDescriptors2];
-  var newCover = createCover(randCover, randTitle, randDesc1, randDesc2);
-  mainCoverTitle.innerText = newCover.title;
-  mainCoverImg.src = randCover;
-  mainCoverTagline1.innerText = randDesc1;
-  mainCoverTagline2.innerText = randDesc2;
+  createRandom();
 });
 
 showNewBtn.addEventListener("click", function () {
+  createRandom();
+});
+
+// Create your event handlers and other functions here 👇
+var createRandom = function () {
   var randIndexCovers = getRandomIndex(covers);
   var randIndexTitles = getRandomIndex(titles);
   var randIndexDescriptors1 = getRandomIndex(descriptors);
@@ -50,9 +43,7 @@ showNewBtn.addEventListener("click", function () {
   mainCoverImg.src = randCover;
   mainCoverTagline1.innerText = randDesc1;
   mainCoverTagline2.innerText = randDesc2;
-});
-
-// Create your event handlers and other functions here 👇
+};
 
 // We've provided two functions to get you started
 function getRandomIndex(array) {
