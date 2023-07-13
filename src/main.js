@@ -19,24 +19,6 @@ var savedCovers = [
 var currentCover
 
 // Add your event listeners here 👇
-<<<<<<< HEAD
-showNewBtn.addEventListener("click", function(){
-  var randIndexCovers = getRandomIndex(covers);
-  var randIndexTitles = getRandomIndex(titles);
-  var randIndexDescriptors = getRandomIndex(descriptors);
-  var randCover = covers[randIndexCovers]
-  var randTitle = titles[randIndexTitles]
-  var randDesc1 = descriptors[randIndexDescriptors]
-  var randDesc2 = descriptors[randIndexDescriptors]
-  var newCover = createCover(randCover, randTitle, randDesc1, randDesc2)
-  mainCoverTitle.innerText = newCover.title;
-  mainCoverImg.src = randCover;
-  mainCoverTagline1.innerText = randDesc1;
-  mainCoverTagline2.innerText = randDesc2;
-
-  console.log(cover.title)
-})
-=======
 
 window.addEventListener("DOMContentLoaded", () => {
   createRandom();
@@ -45,7 +27,6 @@ window.addEventListener("DOMContentLoaded", () => {
 showNewBtn.addEventListener("click", function () {
   createRandom();
 });
->>>>>>> main
 
 
 // Create your event handlers and other functions here 👇
