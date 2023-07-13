@@ -20,16 +20,16 @@ var currentCover;
 
 // Add your event listeners here 👇
 
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("DOMContentLoaded", function() {
   createRandom();
 });
 
-showNewBtn.addEventListener("click", function () {
+showNewBtn.addEventListener("click", function() {
   createRandom();
 });
 
 // Create your event handlers and other functions here 👇
-var createRandom = function () {
+var createRandom = function() {
   var randIndexCovers = getRandomIndex(covers);
   var randIndexTitles = getRandomIndex(titles);
   var randIndexDescriptors1 = getRandomIndex(descriptors);
