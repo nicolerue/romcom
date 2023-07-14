@@ -1,5 +1,4 @@
 // Create variables targetting the relevant DOM elements here 👇
-
 //ALL BUTTONS NAV BAR
 var showNewBtn = document.querySelector(".random-cover-button");
 var makeOwnCoverBtn = document.querySelector(".make-new-button");
@@ -14,6 +13,7 @@ var makeMyBookBtn = document.querySelector(".create-new-book-button");
 var homePage = document.querySelector(".home-view");
 var makeOwnCoverPage = document.querySelector(".form-view");
 var viewSavedCoversPage = document.querySelector(".saved-view");
+var miniDisplayIcons = document.querySelectorAll(".mini-cover-icons");
 
 // Main page random Cover
 var mainCoverImg = document.querySelector(".cover-image");
@@ -31,15 +31,10 @@ var desc2InputField = document.querySelector(".user-desc2");
 //SAVED COVERS SECTION
 var savedCoversSection = document.querySelector(".saved-covers-section");
 
+//BOOKS IN SAVED COVERS PAGE
+
 // We've provided a few variables below
-var savedCovers = [
-  createCover(
-    "http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg",
-    "Sunsets and Sorrows",
-    "sunsets",
-    "sorrows"
-  ),
-];
+var savedCovers = [];
 
 // Add your event listeners here 👇
 
@@ -59,8 +54,15 @@ makeMyBookBtn.addEventListener("click", createnewCoverObj);
 
 saveCoverBtn.addEventListener("click", saveNewCover);
 
+// const card = document.querySelector("aside");
+
+// card.addEventListener("dblclick", (e) => {
+//   card.classList.toggle("large");
+// });
+
 // Create your event handlers and other functions here 👇
 //function for saving the cover
+
 function saveNewCover(event) {
   event.preventDefault();
   var currentCover = {
@@ -70,19 +72,42 @@ function saveNewCover(event) {
     tagline1: `${mainCoverTagline1.innerText}`,
     tagline2: `${mainCoverTagline2.innerText}`,
   };
-  savedCovers.push(currentCover);
-}
-// savedCovers.push(currentCover);
-// console.log(savedCovers);
 
-// for (var i = 0; i < savedCovers.length; i++) {
-//   if (savedCovers[i] === currentCover) {
-//     !savedCovers.push(currentCover);
-//   } else {
-//     savedCovers.push(currentCover);
-//   }
-// }
-// }
+  var isDuplicate = false;
+  // check if the current cover already exists in the array
+
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (
+      savedCovers[i].title === currentCover.title &&
+      savedCovers[i].tagline1 === currentCover.tagline1 &&
+      savedCovers[i].tagline2 === currentCover.tagline2
+    ) {
+      isDuplicate = true;
+    }
+  }
+  if (!isDuplicate) {
+    savedCovers.push(currentCover);
+  }
+}
+
+for (var i = 0; i < savedCovers.length; i++) {
+  if (
+    savedCovers[i].title == currentCover.title &&
+    savedCovers[i].tagline1 == currentCover.tagline1 &&
+    savedCovers[i].tagline2 == currentCover.tagline2
+  ) {
+    savedCovers.splice(i, 1);
+  }
+}
+
+viewSavedCoversPage.addEventListener("dblclick", (e) => {
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (savedCovers[i].id == e.target.id) {
+      savedCovers.splice(i, 1);
+    }
+  }
+  clickedViewSavedCorner();
+});
 
 //function for creating a new cover obj
 function createnewCoverObj(event) {
@@ -145,9 +170,10 @@ function clickedViewSavedCorner() {
   viewSavedCoversPage.classList.add("saved-covers-section");
 
   var newHTML = "";
+  // var uniqueSavedCovers = [...new Set(savedCovers)];
   for (var i = 0; i < savedCovers.length; i++) {
-    newHTML += ` <section class="mini-cover">
-    <img class="mini-cover" src="${savedCovers[i].coverImg}" />
+    newHTML += ` <section class="mini-cover mini-cover-icons">
+    <img class="mini-cover" src="${savedCovers[i].coverImg}" id=${savedCovers[i].id} />
     <h2 class="cover-title">${savedCovers[i].title}</h2>
     <h3 class="tagline">
       A tale of <span>${savedCovers[i].tagline1}</span> and
@@ -160,46 +186,14 @@ function clickedViewSavedCorner() {
   viewSavedCoversPage.innerHTML = newHTML;
 }
 
-// .saved-view {
-//   padding: 30px;
-// }
-
-// .saved-covers-section {
-//   display: flex;
-//   flex-direction: row;
-//   flex-wrap: wrap;
-//   justify-content: space-around;
-// }
-
-// .mini-cover {
-//   height: 40vh;
-//   margin: 1.3vh auto;
-//   position: relative;
-//   width: 14vw;
-// }
-
-// .mini-cover > .cover-title {
-//   bottom: 45px;
-//   font-size: 40px;
-// }
-
-// .mini-cover > .cover-title::first-letter {
-//   font-size: 60px;
-// }
-
-// .mini-cover > .tagline {
-//   background: RGBA(126, 84, 150, .5);
-//   bottom: 5px;
-//   color: #fcf4dc;
-//   font-size: 10px;
-//   padding: 5px;
-// }
-
 function clickedHomeButton() {
   checkPage(homePage);
   removeElementOrPage(homeBtn);
   showElementOrPage(showNewBtn);
   showElementOrPage(saveCoverBtn);
+  removeElementOrPage(viewSavedCoversPage);
+  removeElementOrPage(savedCoversSection);
+  removeElementOrPage(miniDisplayIcons);
 }
 
 // creating random funcctions
