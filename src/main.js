@@ -35,7 +35,7 @@ var savedCovers = [];
 
 // Add your event listeners here 👇
 
-window.addEventListener("DOMContentLoaded", function() {
+window.addEventListener("DOMContentLoaded", function () {
   createRandom();
 });
 
@@ -51,11 +51,6 @@ makeMyBookBtn.addEventListener("click", createnewCoverObj);
 
 saveCoverBtn.addEventListener("click", saveNewCover);
 
-// const card = document.querySelector("aside");
-
-// card.addEventListener("dblclick", (e) => {
-//   card.classList.toggle("large");
-// });
 
 // Create your event handlers and other functions here 👇
 //function for saving the cover
@@ -88,8 +83,9 @@ function saveNewCover(event) {
   }
 }
 
-  for (var i = 0; i < savedCovers.length; i++) {
+for (var i = 0; i < savedCovers.length; i++) {
   if (
+    savedCovers[i].coverImg === currentCover.coverImg &&
     savedCovers[i].title == currentCover.title &&
     savedCovers[i].tagline1 == currentCover.tagline1 &&
     savedCovers[i].tagline2 == currentCover.tagline2
@@ -120,7 +116,7 @@ function createnewCoverObj(event) {
   titles.push(titleInputField.value);
   descriptors.push(desc1InputField.value);
   descriptors.push(desc2InputField.value);
-  
+
   mainCoverTitle.innerText = newUserCover.title;
   mainCoverImg.src = newUserCover.coverImg;
   mainCoverTagline1.innerText = newUserCover.tagline1;
@@ -164,7 +160,7 @@ function clickedViewSavedCover() {
   removeElementOrPage(saveCoverBtn);
   showElementOrPage(homeBtn);
 
-var newHTML = `<section class="saved-view saved-covers-section">`; //
+  var newHTML = `<section class="saved-view saved-covers-section">`; //
   for (var i = 0; i < savedCovers.length; i++) {
     newHTML += `<section class="mini-cover">
     <img class="mini-cover" src="${savedCovers[i].coverImg}" />
@@ -190,7 +186,7 @@ function clickedHomeButton() {
   removeElementOrPage(viewSavedCoversPage);
   removeElementOrPage(savedCoversSection);
   removeElementOrPage(miniDisplayIcons);
-  
+
 }
 
 
@@ -227,53 +223,3 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
   };
   return cover;
 }
-
-// Original Code to be refactored:
-// var clickedMakeOwnCover = function () {
-//   if (makeOwnCoverPage.classList.contains("hidden")) {
-//     makeOwnCoverPage.classList.remove("hidden");
-//   }
-//   homePage.classList.add("hidden");
-//   homeBtn.classList.remove("hidden");
-//   showNewBtn.classList.add("hidden");
-//   saveCoverBtn.classList.add("hidden");
-// };
-
-// var clickedViewSavedCorner = function () {
-//   if (viewSavedCoversPage.classList.contains("hidden")) {
-//     viewSavedCoversPage.classList.remove("hidden");
-//   }
-//   homePage.classList.add("hidden");
-//   homeBtn.classList.remove("hidden");
-//   showNewBtn.classList.add("hidden");
-//   saveCoverBtn.classList.add("hidden");
-// };
-
-// var clickedHomeButton = function () {
-//   if (homePage.classList.contains("hidden")) {
-//     homePage.classList.remove("hidden");
-//   }
-//   homeBtn.classList.add("hidden");
-//   showNewBtn.classList.remove("hidden");
-//   saveCoverBtn.classList.remove("hidden");
-// };
-
-// window.addEventListener("DOMContentLoaded", () => {
-//   createRandom();
-// });
-
-// showNewBtn.addEventListener("click", function () {
-//   createRandom();
-// });
-
-// makeOwnCoverBtn.addEventListener("click", function () {
-//   clickedMakeOwnCover();
-// });
-
-// viewSavedBtn.addEventListener("click", function () {
-//   clickedViewSavedCorner();
-// });
-
-// homeBtn.addEventListener("click", function () {
-//   clickedHomeButton();
-// });
