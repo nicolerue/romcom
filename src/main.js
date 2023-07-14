@@ -38,7 +38,7 @@ var savedCovers = [];
 
 // Add your event listeners here 👇
 
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("DOMContentLoaded", function() {
   createRandom();
 });
 
@@ -46,7 +46,7 @@ showNewBtn.addEventListener("click", createRandom);
 
 makeOwnCoverBtn.addEventListener("click", clickedMakeOwnCover);
 
-viewSavedBtn.addEventListener("click", clickedViewSavedCorner);
+viewSavedBtn.addEventListener("click", clickedViewSavedCover);
 
 homeBtn.addEventListener("click", clickedHomeButton);
 
@@ -78,6 +78,7 @@ function saveNewCover(event) {
 
   for (var i = 0; i < savedCovers.length; i++) {
     if (
+      savedCovers[i].coverImg === currentCover.coverImg &&
       savedCovers[i].title === currentCover.title &&
       savedCovers[i].tagline1 === currentCover.tagline1 &&
       savedCovers[i].tagline2 === currentCover.tagline2
@@ -100,13 +101,13 @@ for (var i = 0; i < savedCovers.length; i++) {
   }
 }
 
-viewSavedCoversPage.addEventListener("dblclick", (e) => {
+viewSavedCoversPage.addEventListener("click", (e) => {
   for (var i = 0; i < savedCovers.length; i++) {
     if (savedCovers[i].id == e.target.id) {
       savedCovers.splice(i, 1);
     }
   }
-  clickedViewSavedCorner();
+  clickedViewSavedCover();
 });
 
 //function for creating a new cover obj
@@ -123,8 +124,6 @@ function createnewCoverObj(event) {
   descriptors.push(desc1InputField.value);
   descriptors.push(desc2InputField);
 
-  clickedHomeButton();
-  removeElementOrPage(makeOwnCoverPage);
 
   mainCoverTitle.innerText = newUserCover.title;
   mainCoverImg.src = newUserCover.coverImg;
@@ -140,6 +139,7 @@ function showElementOrPage(element) {
 
 function removeElementOrPage(element) {
   element.classList.add("hidden");
+
 }
 
 function checkPage(page) {
@@ -159,7 +159,7 @@ function clickedMakeOwnCover() {
   viewSavedCoversPage.classList.remove("saved-covers-section");
 }
 
-function clickedViewSavedCorner() {
+function clickedViewSavedCover() {
   checkPage(viewSavedCoversPage);
   removeElementOrPage(homePage);
   removeElementOrPage(showNewBtn);
@@ -194,7 +194,9 @@ function clickedHomeButton() {
   removeElementOrPage(viewSavedCoversPage);
   removeElementOrPage(savedCoversSection);
   removeElementOrPage(miniDisplayIcons);
+  removeElementOrPage(makeOwnCoverPage);
 }
+
 
 // creating random funcctions
 function createRandom() {
