@@ -120,14 +120,13 @@ function createnewCoverObj(event) {
   titles.push(titleInputField.value);
   descriptors.push(desc1InputField.value);
   descriptors.push(desc2InputField.value);
-
-  clickedHomeButton();
-  removeElementOrPage(makeOwnCoverPage)
   
   mainCoverTitle.innerText = newUserCover.title;
   mainCoverImg.src = newUserCover.coverImg;
   mainCoverTagline1.innerText = newUserCover.tagline1;
   mainCoverTagline2.innerText = newUserCover.tagline2;
+
+  clickedHomeButton();
 }
 
 // Functions for toggling between buttons
