@@ -98,9 +98,9 @@ function saveNewCover(event) {
   }
 }
 
-viewSavedCoversPage.addEventListener("click", (e) => {
+viewSavedCoversPage.addEventListener("click", (element) => {
   for (var i = 0; i < savedCovers.length; i++) {
-    if (savedCovers[i].id == e.target.id) {
+    if (savedCovers[i].id == element.target.id) {
       savedCovers.splice(i, 1);
     }
   }
@@ -189,7 +189,7 @@ function clickedHomeButton() {
   removeElementOrPage(makeOwnCoverPage);
   removeElementOrPage(viewSavedCoversPage);
   removeElementOrPage(savedCoversSection);
-  removeElementOrPage(miniDisplayIcons);
+  //removeElementOrPage(miniDisplayIcons);
   
 }
 
