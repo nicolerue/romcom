@@ -185,13 +185,8 @@ function clickedHomeButton() {
   removeElementOrPage(makeOwnCoverPage);
   removeElementOrPage(viewSavedCoversPage);
   removeElementOrPage(savedCoversSection);
-<<<<<<< HEAD
-  //removeElementOrPage(miniDisplayIcons);
-  
-=======
   removeElementOrPage(miniDisplayIcons);
 
->>>>>>> main
 }
 
 
