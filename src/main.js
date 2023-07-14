@@ -131,44 +131,26 @@ function checkPage(page) {
 }
 
 function clickedMakeOwnCover() {
-  // checkPage(makeOwnCoverPage);
-  // removeElementOrPage(homePage);
-  // removeElementOrPage(showNewBtn);
-  // removeElementOrPage(viewSavedCoversPage);
-  // removeElementOrPage(saveCoverBtn);
-  // showElementOrPage(homeBtn);
-  // viewSavedCoversPage.classList.remove("saved-view");
-  // viewSavedCoversPage.classList.remove("saved-covers-section");
+  checkPage(makeOwnCoverPage);
   removeElementOrPage(homePage);
-  showElementOrPage(makeOwnCoverPage);
-  removeElementOrPage(viewSavedCoversPage);
-  showElementOrPage(homeBtn);
   removeElementOrPage(showNewBtn);
+  removeElementOrPage(viewSavedCoversPage);
   removeElementOrPage(saveCoverBtn);
+  showElementOrPage(homeBtn);
+
 }
 
 function clickedViewSavedCorner() {
-  // checkPage(viewSavedCoversPage);
-  // removeElementOrPage(homePage);
-  // removeElementOrPage(showNewBtn);
-  // removeElementOrPage(makeOwnCoverPage);
-  // removeElementOrPage(saveCoverBtn);
-  // showElementOrPage(homeBtn);
-  // viewSavedCoversPage.classList.add("saved-view");
-  // viewSavedCoversPage.classList.add("saved-covers-section");
+  checkPage(viewSavedCoversPage);
   removeElementOrPage(homePage);
-  removeElementOrPage(makeOwnCoverPage);
-  showElementOrPage(viewSavedCoversPage);
-  showElementOrPage(homeBtn);
   removeElementOrPage(showNewBtn);
+  removeElementOrPage(makeOwnCoverPage);
   removeElementOrPage(saveCoverBtn);
+  showElementOrPage(homeBtn);
 
-  // viewSavedCoversPage.classList.add("saved-view");
-  // viewSavedCoversPage.classList.add("saved-covers-section");
-
-var newHTML = "";
+var newHTML = `<section class="saved-view saved-covers-section">`; //
   for (var i = 0; i < savedCovers.length; i++) {
-    newHTML += ` <section class="mini-cover">
+    newHTML += `<section class="mini-cover">
     <img class="mini-cover" src="${savedCovers[i].coverImg}" />
     <h2 class="cover-title">${savedCovers[i].title}</h2>
     <h3 class="tagline">
@@ -179,6 +161,7 @@ var newHTML = "";
     <img class="overlay" src="./assets/overlay.png" />
   </section>`;
   }
+  newHTML += `</section`; //
   viewSavedCoversPage.innerHTML = newHTML;
 }
 
