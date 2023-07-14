@@ -12,12 +12,8 @@ var makeMyBookBtn = document.querySelector(".create-new-book-button");
 //ALL PAGES
 var homePage = document.querySelector(".home-view");
 var makeOwnCoverPage = document.querySelector(".form-view");
-<<<<<<< HEAD
-var viewSavedCoversPage = document.querySelector(".saved-view")
-=======
 var viewSavedCoversPage = document.querySelector(".saved-view");
 var miniDisplayIcons = document.querySelectorAll(".mini-cover-icons");
->>>>>>> main
 
 // Main page random Cover
 var mainCoverImg = document.querySelector(".cover-image");
@@ -34,12 +30,6 @@ var desc2InputField = document.querySelector(".user-desc2");
 
 //SAVED COVERS SECTION
 var savedCoversSection = document.querySelector(".saved-covers-section");
-<<<<<<< HEAD
-=======
-
-//BOOKS IN SAVED COVERS PAGE
-
->>>>>>> main
 // We've provided a few variables below
 var savedCovers = [];
 
@@ -79,21 +69,6 @@ function saveNewCover(event) {
     tagline1: `${mainCoverTagline1.innerText}`,
     tagline2: `${mainCoverTagline2.innerText}`,
   };
-<<<<<<< HEAD
-
-  var isDuplicate = savedCovers.some(function(cover) {
-    return cover.coverImg === currentCover.coverImg;
-  });
-  
-   if (isDuplicate === false) {
-    savedCovers.push(currentCover);
-  }
-}
-
-
-// console.log(savedCovers);
-=======
->>>>>>> main
 
   var isDuplicate = false;
   // check if the current cover already exists in the array
@@ -146,7 +121,6 @@ function createnewCoverObj(event) {
   descriptors.push(desc1InputField.value);
   descriptors.push(desc2InputField);
 
-
   mainCoverTitle.innerText = newUserCover.title;
   mainCoverImg.src = newUserCover.coverImg;
   mainCoverTagline1.innerText = newUserCover.tagline1;
@@ -188,26 +162,18 @@ function clickedViewSavedCover() {
   removeElementOrPage(saveCoverBtn);
   showElementOrPage(homeBtn);
 
-<<<<<<< HEAD
-var newHTML = `<section class="saved-view saved-covers-section">`; //
-  for (var i = 0; i < savedCovers.length; i++) {
-    newHTML += `<section class="mini-cover">
-    <img class="mini-cover" src="${savedCovers[i].coverImg}" />
-=======
-  var newHTML = "";
-  // var uniqueSavedCovers = [...new Set(savedCovers)];
-  for (var i = 0; i < savedCovers.length; i++) {
-    newHTML += ` <section class="mini-cover mini-cover-icons">
-    <img class="mini-cover" src="${savedCovers[i].coverImg}" id=${savedCovers[i].id} />
->>>>>>> main
-    <h2 class="cover-title">${savedCovers[i].title}</h2>
-    <h3 class="tagline">
-      A tale of <span>${savedCovers[i].tagline1}</span> and
-      <span>${savedCovers[i].tagline2}</span>
-    </h3>
-    <img class="price-tag" src="./assets/price.png" />
-    <img class="overlay" src="./assets/overlay.png" />
-  </section>`;
+  var newHTML = `<section class="saved-view saved-covers-section">`;
+    for (var i = 0; i < savedCovers.length; i++) {
+      newHTML += ` <section class="mini-cover mini-cover-icons">
+      <img class="mini-cover" src="${savedCovers[i].coverImg}" id=${savedCovers[i].id} />
+      <h2 class="cover-title">${savedCovers[i].title}</h2>
+      <h3 class="tagline">
+        A tale of <span>${savedCovers[i].tagline1}</span> and
+        <span>${savedCovers[i].tagline2}</span>
+      </h3>
+      <img class="price-tag" src="./assets/price.png" />
+      <img class="overlay" src="./assets/overlay.png" />
+    </section>`;
   }
   newHTML += `</section`; //
   viewSavedCoversPage.innerHTML = newHTML;
@@ -220,8 +186,6 @@ function clickedHomeButton() {
   // showElementOrPage(saveCoverBtn);
   // removeElementOrPage(makeOwnCoverPage);
   showElementOrPage(homePage);
-  removeElementOrPage(makeOwnCoverPage);
-  removeElementOrPage(viewSavedCoversPage);
   showElementOrPage(showNewBtn);
   showElementOrPage(saveCoverBtn);
   removeElementOrPage(viewSavedCoversPage);
