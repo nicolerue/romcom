@@ -13,7 +13,7 @@ var makeMyBookBtn = document.querySelector(".create-new-book-button");
 //ALL PAGES
 var homePage = document.querySelector(".home-view");
 var makeOwnCoverPage = document.querySelector(".form-view");
-var viewSavedCoversPage = document.querySelector(".saved-view");
+var viewSavedCoversPage = document.querySelector(".saved-view")
 
 // Main page random Cover
 var mainCoverImg = document.querySelector(".cover-image");
@@ -30,7 +30,6 @@ var desc2InputField = document.querySelector(".user-desc2");
 
 //SAVED COVERS SECTION
 var savedCoversSection = document.querySelector(".saved-covers-section");
-
 // We've provided a few variables below
 var savedCovers = [
   createCover(
@@ -70,9 +69,17 @@ function saveNewCover(event) {
     tagline1: `${mainCoverTagline1.innerText}`,
     tagline2: `${mainCoverTagline2.innerText}`,
   };
-  savedCovers.push(currentCover);
+
+  var isDuplicate = savedCovers.some(function(cover) {
+    return cover.coverImg === currentCover.coverImg;
+  });
+  
+   if (isDuplicate === false) {
+    savedCovers.push(currentCover);
+  }
 }
-// savedCovers.push(currentCover);
+
+
 // console.log(savedCovers);
 
 // for (var i = 0; i < savedCovers.length; i++) {
@@ -200,6 +207,7 @@ function clickedHomeButton() {
   removeElementOrPage(homeBtn);
   showElementOrPage(showNewBtn);
   showElementOrPage(saveCoverBtn);
+  removeElementOrPage(makeOwnCoverPage);
 }
 
 // creating random funcctions
