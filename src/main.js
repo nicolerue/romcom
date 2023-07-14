@@ -30,9 +30,6 @@ var desc2InputField = document.querySelector(".user-desc2");
 
 //SAVED COVERS SECTION
 var savedCoversSection = document.querySelector(".saved-covers-section");
-
-//BOOKS IN SAVED COVERS PAGE
-
 // We've provided a few variables below
 var savedCovers = [];
 
@@ -91,7 +88,7 @@ function saveNewCover(event) {
   }
 }
 
-for (var i = 0; i < savedCovers.length; i++) {
+  for (var i = 0; i < savedCovers.length; i++) {
   if (
     savedCovers[i].title == currentCover.title &&
     savedCovers[i].tagline1 == currentCover.tagline1 &&
@@ -122,13 +119,14 @@ function createnewCoverObj(event) {
   covers.push(coverInputField.value);
   titles.push(titleInputField.value);
   descriptors.push(desc1InputField.value);
-  descriptors.push(desc2InputField);
-
-
+  descriptors.push(desc2InputField.value);
+  
   mainCoverTitle.innerText = newUserCover.title;
   mainCoverImg.src = newUserCover.coverImg;
   mainCoverTagline1.innerText = newUserCover.tagline1;
   mainCoverTagline2.innerText = newUserCover.tagline2;
+
+  clickedHomeButton();
 }
 
 // Functions for toggling between buttons
@@ -155,8 +153,7 @@ function clickedMakeOwnCover() {
   removeElementOrPage(viewSavedCoversPage);
   removeElementOrPage(saveCoverBtn);
   showElementOrPage(homeBtn);
-  viewSavedCoversPage.classList.remove("saved-view");
-  viewSavedCoversPage.classList.remove("saved-covers-section");
+
 }
 
 function clickedViewSavedCover() {
@@ -166,14 +163,11 @@ function clickedViewSavedCover() {
   removeElementOrPage(makeOwnCoverPage);
   removeElementOrPage(saveCoverBtn);
   showElementOrPage(homeBtn);
-  viewSavedCoversPage.classList.add("saved-view");
-  viewSavedCoversPage.classList.add("saved-covers-section");
 
-  var newHTML = "";
-  // var uniqueSavedCovers = [...new Set(savedCovers)];
+var newHTML = `<section class="saved-view saved-covers-section">`; //
   for (var i = 0; i < savedCovers.length; i++) {
-    newHTML += ` <section class="mini-cover mini-cover-icons">
-    <img class="mini-cover" src="${savedCovers[i].coverImg}" id=${savedCovers[i].id} />
+    newHTML += `<section class="mini-cover">
+    <img class="mini-cover" src="${savedCovers[i].coverImg}" />
     <h2 class="cover-title">${savedCovers[i].title}</h2>
     <h3 class="tagline">
       A tale of <span>${savedCovers[i].tagline1}</span> and
@@ -183,6 +177,7 @@ function clickedViewSavedCover() {
     <img class="overlay" src="./assets/overlay.png" />
   </section>`;
   }
+  newHTML += `</section>`; //
   viewSavedCoversPage.innerHTML = newHTML;
 }
 
@@ -191,10 +186,11 @@ function clickedHomeButton() {
   removeElementOrPage(homeBtn);
   showElementOrPage(showNewBtn);
   showElementOrPage(saveCoverBtn);
+  removeElementOrPage(makeOwnCoverPage);
   removeElementOrPage(viewSavedCoversPage);
   removeElementOrPage(savedCoversSection);
   removeElementOrPage(miniDisplayIcons);
-  removeElementOrPage(makeOwnCoverPage);
+  
 }
 
 
