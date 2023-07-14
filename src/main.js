@@ -131,27 +131,42 @@ function checkPage(page) {
 }
 
 function clickedMakeOwnCover() {
-  checkPage(makeOwnCoverPage);
+  // checkPage(makeOwnCoverPage);
+  // removeElementOrPage(homePage);
+  // removeElementOrPage(showNewBtn);
+  // removeElementOrPage(viewSavedCoversPage);
+  // removeElementOrPage(saveCoverBtn);
+  // showElementOrPage(homeBtn);
+  // viewSavedCoversPage.classList.remove("saved-view");
+  // viewSavedCoversPage.classList.remove("saved-covers-section");
   removeElementOrPage(homePage);
-  removeElementOrPage(showNewBtn);
+  showElementOrPage(makeOwnCoverPage);
   removeElementOrPage(viewSavedCoversPage);
-  removeElementOrPage(saveCoverBtn);
   showElementOrPage(homeBtn);
-  viewSavedCoversPage.classList.remove("saved-view");
-  viewSavedCoversPage.classList.remove("saved-covers-section");
+  removeElementOrPage(showNewBtn);
+  removeElementOrPage(saveCoverBtn);
 }
 
 function clickedViewSavedCorner() {
-  checkPage(viewSavedCoversPage);
+  // checkPage(viewSavedCoversPage);
+  // removeElementOrPage(homePage);
+  // removeElementOrPage(showNewBtn);
+  // removeElementOrPage(makeOwnCoverPage);
+  // removeElementOrPage(saveCoverBtn);
+  // showElementOrPage(homeBtn);
+  // viewSavedCoversPage.classList.add("saved-view");
+  // viewSavedCoversPage.classList.add("saved-covers-section");
   removeElementOrPage(homePage);
-  removeElementOrPage(showNewBtn);
   removeElementOrPage(makeOwnCoverPage);
-  removeElementOrPage(saveCoverBtn);
+  showElementOrPage(viewSavedCoversPage);
   showElementOrPage(homeBtn);
-  viewSavedCoversPage.classList.add("saved-view");
-  viewSavedCoversPage.classList.add("saved-covers-section");
+  removeElementOrPage(showNewBtn);
+  removeElementOrPage(saveCoverBtn);
 
-  var newHTML = "";
+  // viewSavedCoversPage.classList.add("saved-view");
+  // viewSavedCoversPage.classList.add("saved-covers-section");
+
+var newHTML = "";
   for (var i = 0; i < savedCovers.length; i++) {
     newHTML += ` <section class="mini-cover">
     <img class="mini-cover" src="${savedCovers[i].coverImg}" />
@@ -203,11 +218,16 @@ function clickedViewSavedCorner() {
 // }
 
 function clickedHomeButton() {
-  checkPage(homePage);
-  removeElementOrPage(homeBtn);
+  // checkPage(homePage);
+  // removeElementOrPage(homeBtn);
+  // showElementOrPage(showNewBtn);
+  // showElementOrPage(saveCoverBtn);
+  // removeElementOrPage(makeOwnCoverPage);
+  showElementOrPage(homePage);
+  removeElementOrPage(makeOwnCoverPage);
+  removeElementOrPage(viewSavedCoversPage);
   showElementOrPage(showNewBtn);
   showElementOrPage(saveCoverBtn);
-  removeElementOrPage(makeOwnCoverPage);
 }
 
 // creating random funcctions
