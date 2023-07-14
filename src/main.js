@@ -88,7 +88,7 @@ function saveNewCover(event) {
   }
 }
 
-for (var i = 0; i < savedCovers.length; i++) {
+  for (var i = 0; i < savedCovers.length; i++) {
   if (
     savedCovers[i].title == currentCover.title &&
     savedCovers[i].tagline1 == currentCover.tagline1 &&
@@ -119,8 +119,11 @@ function createnewCoverObj(event) {
   covers.push(coverInputField.value);
   titles.push(titleInputField.value);
   descriptors.push(desc1InputField.value);
-  descriptors.push(desc2InputField);
+  descriptors.push(desc2InputField.value);
 
+  clickedHomeButton();
+  removeElementOrPage(makeOwnCoverPage)
+  
   mainCoverTitle.innerText = newUserCover.title;
   mainCoverImg.src = newUserCover.coverImg;
   mainCoverTagline1.innerText = newUserCover.tagline1;
@@ -162,36 +165,33 @@ function clickedViewSavedCover() {
   removeElementOrPage(saveCoverBtn);
   showElementOrPage(homeBtn);
 
-  var newHTML = `<section class="saved-view saved-covers-section">`;
-    for (var i = 0; i < savedCovers.length; i++) {
-      newHTML += ` <section class="mini-cover mini-cover-icons">
-      <img class="mini-cover" src="${savedCovers[i].coverImg}" id=${savedCovers[i].id} />
-      <h2 class="cover-title">${savedCovers[i].title}</h2>
-      <h3 class="tagline">
-        A tale of <span>${savedCovers[i].tagline1}</span> and
-        <span>${savedCovers[i].tagline2}</span>
-      </h3>
-      <img class="price-tag" src="./assets/price.png" />
-      <img class="overlay" src="./assets/overlay.png" />
-    </section>`;
+var newHTML = `<section class="saved-view saved-covers-section">`; //
+  for (var i = 0; i < savedCovers.length; i++) {
+    newHTML += `<section class="mini-cover">
+    <img class="mini-cover" src="${savedCovers[i].coverImg}" />
+    <h2 class="cover-title">${savedCovers[i].title}</h2>
+    <h3 class="tagline">
+      A tale of <span>${savedCovers[i].tagline1}</span> and
+      <span>${savedCovers[i].tagline2}</span>
+    </h3>
+    <img class="price-tag" src="./assets/price.png" />
+    <img class="overlay" src="./assets/overlay.png" />
+  </section>`;
   }
-  newHTML += `</section`; //
+  newHTML += `</section>`; //
   viewSavedCoversPage.innerHTML = newHTML;
 }
 
 function clickedHomeButton() {
-  // checkPage(homePage);
-  // removeElementOrPage(homeBtn);
-  // showElementOrPage(showNewBtn);
-  // showElementOrPage(saveCoverBtn);
-  // removeElementOrPage(makeOwnCoverPage);
-  showElementOrPage(homePage);
+  checkPage(homePage);
+  removeElementOrPage(homeBtn);
   showElementOrPage(showNewBtn);
   showElementOrPage(saveCoverBtn);
+  removeElementOrPage(makeOwnCoverPage);
   removeElementOrPage(viewSavedCoversPage);
   removeElementOrPage(savedCoversSection);
   removeElementOrPage(miniDisplayIcons);
-  removeElementOrPage(makeOwnCoverPage);
+  
 }
 
 
