@@ -2,7 +2,7 @@
 *:before,
 *:after {
   box-sizing: border-box;
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
 }
 
 body {
@@ -12,6 +12,10 @@ body {
 
 .hidden {
   display: none;
+}
+
+.hidden-error {
+  display: none !important;
 }
 
 /* ~~~~~~~~~~~~~~ CONTROLS ~~~~~~~~~~~~~~~~ */
@@ -61,8 +65,8 @@ body {
 }
 
 .cover-title {
-  bottom: .9em;
-  font-family: 'Playball', cursive;
+  bottom: 0.9em;
+  font-family: "Playball", cursive;
   font-size: 4.5em;
   font-weight: normal;
   line-height: 90%;
@@ -75,7 +79,7 @@ body {
 }
 
 .tagline {
-  background: rgba(126, 84, 150, .5);
+  background: rgba(126, 84, 150, 0.5);
   color: #fcf4dc;
   padding: 5px;
   bottom: 5px;
@@ -125,7 +129,7 @@ body {
 }
 
 .mini-cover > .tagline {
-  background: RGBA(126, 84, 150, .5);
+  background: RGBA(126, 84, 150, 0.5);
   bottom: 5px;
   color: #fcf4dc;
   font-size: 10px;
@@ -163,4 +167,20 @@ form > button {
 form > button:hover {
   background: #e07999;
   color: white;
+}
+
+/* ~~~~~~~~~~~~~ EXTENSIONS ~~~~~~~~~~~~~~~ */
+
+.error-message {
+  display: flex;
+  justify-content: center;
+  font-size: 1.2rem;
+  padding: 1.2rem;
+  margin: 1rem;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 0 3.2rem rgba(112, 21, 21, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: rgba(153, 8, 8, 0.5);
+  border-radius: 2rem;
 }
