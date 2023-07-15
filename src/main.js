@@ -49,8 +49,6 @@ makeMyBookBtn.addEventListener("click", createNewCoverObj);
 
 saveCoverBtn.addEventListener("click", saveNewCover);
 
-savedCoversSection.addEventListener("dblclick", deleteSavedCover);
-
 
 // Create your event handlers and other functions here 👇
 
@@ -83,27 +81,17 @@ function saveNewCover(event) {
   }
 }
 
-// for (var i = 0; i < savedCovers.length; i++) {
-//   if (
-//     savedCovers[i].coverImg === currentCover.coverImg &&
-//     savedCovers[i].title == currentCover.title &&
-//     savedCovers[i].tagline1 == currentCover.tagline1 &&
-//     savedCovers[i].tagline2 == currentCover.tagline2
-//   ) {
-//     savedCovers.splice(i, 1);
-//   }
-// }
+// double click to delete
+viewSavedCoversPage.addEventListener("dblclick", (element) => {
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (savedCovers[i].id == element.target.id) {
+      savedCovers.splice(i, 1);
+    }
+  }
+  clickedViewSavedCover();
+});
 
-// viewSavedCoversPage.addEventListener("click", (element)=> {
-//   for (var i = 0; i < savedCovers.length; i++) {
-//     if (savedCovers[i].id == element.target.id) {
-//       savedCovers.splice(i, 1);
-//     }
-//   }
-//   clickedViewSavedCover();
-// });
-
-//function for creating a new cover obj
+// creating a new cover obj
 function createNewCoverObj(event) {
   event.preventDefault();
   var newUserCover = createCover(
@@ -125,7 +113,7 @@ function createNewCoverObj(event) {
   clickedHomeButton();
 }
 
-//functions for toggling between buttons
+// toggling between buttons
 function showElementOrPage(element) {
   element.classList.remove("hidden");
 }
@@ -162,7 +150,7 @@ function clickedViewSavedCover() {
   var newHTML = `<section class="saved-view saved-covers-section">`; //
   for (var i = 0; i < savedCovers.length; i++) {
     newHTML += `<section class="mini-cover mini-cover-icons">
-    <img class="mini-cover" src="${savedCovers[i].coverImg}" />
+    <img class="mini-cover" src="${savedCovers[i].coverImg}" id=${savedCovers[i].id} />
     <h2 class="cover-title">${savedCovers[i].title}</h2>
     <h3 class="tagline">
       A tale of <span>${savedCovers[i].tagline1}</span> and
@@ -187,7 +175,7 @@ function clickedHomeButton() {
 
 }
 
-//creating random cover
+// creating random cover
 function createRandom() {
   var randIndexCovers = getRandomIndex(covers);
   var randIndexTitles = getRandomIndex(titles);
@@ -204,12 +192,12 @@ function createRandom() {
   mainCoverTagline2.innerText = randDesc2;
 }
 
-//creating a random number
+// creating a random number
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-//creating a book object
+// creating a book object
 function createCover(imgSrc, title, descriptor1, descriptor2) {
   var cover = {
     id: Date.now(),
@@ -219,15 +207,4 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
     tagline2: descriptor2,
   };
   return cover;
-}
-
-//delete saved cover
-function deleteSavedCover(event) {
-  var coverToDelete = event.target.parentElement.id;
-  for (var i = 0; i < savedCovers.length; i++) {
-    if (coverToDelete == savedCovers[i].id) {
-      savedCovers.splice(i, 1);
-    }
-  }
-  clickedViewSavedCover();
 }
