@@ -49,6 +49,7 @@ homeBtn.addEventListener("click", clickedHomeButton);
 makeMyBookBtn.addEventListener("click", createNewCoverObj);
 saveCoverBtn.addEventListener("click", saveNewCover);
 viewSavedCoversPage.addEventListener("dblclick", deleteCover);
+viewSavedCoversPage.addEventListener("click", zoomImg);
 
 //🟠EVENT HANDLERS
 function createRandom() {
@@ -197,4 +198,10 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
     tagline2: descriptor2,
   };
   return cover;
+}
+
+function zoomImg(event) {
+  if (event.target.className.includes('mini-cover')) {
+    event.target.classList.toggle('enlarge')
+  }
 }

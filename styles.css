@@ -132,6 +132,18 @@ body {
   padding: 5px;
 }
 
+/* enlarge img */
+.enlarge {
+  position: relative;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 150%;
+  height: 150%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+}
+
 /* ~~~~~~~~~~~~~ NEW COVER FORM ~~~~~~~~~~~~~~~ */
 form {
   display: flex;
