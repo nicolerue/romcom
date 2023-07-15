@@ -1,58 +1,39 @@
-// Create variables targetting the relevant DOM elements here 👇
-// ALL BUTTONS NAV BAR
 var showNewBtn = document.querySelector(".random-cover-button");
 var makeOwnCoverBtn = document.querySelector(".make-new-button");
 var homeBtn = document.querySelector(".home-button");
 var saveCoverBtn = document.querySelector(".save-cover-button");
 var viewSavedBtn = document.querySelector(".view-saved-button");
 
-// BUTTON - MAKE YOUR OWN COVER
 var makeMyBookBtn = document.querySelector(".create-new-book-button");
 
-// ALL PAGES
 var homePage = document.querySelector(".home-view");
 var makeOwnCoverPage = document.querySelector(".form-view");
 var viewSavedCoversPage = document.querySelector(".saved-view");
 var miniDisplayIcons = document.querySelectorAll(".mini-cover-icons");
 
-// Main page random Cover
 var mainCoverImg = document.querySelector(".cover-image");
 var mainCoverTitle = document.querySelector(".cover-title");
 var mainCoverTagline = document.querySelector(".tagline");
 var mainCoverTagline1 = document.querySelector(".tagline-1");
 var mainCoverTagline2 = document.querySelector(".tagline-2");
 
-// Form Input Fields
 var coverInputField = document.querySelector(".user-cover");
 var titleInputField = document.querySelector(".user-title");
 var desc1InputField = document.querySelector(".user-desc1");
 var desc2InputField = document.querySelector(".user-desc2");
 
-// SAVED COVERS SECTION
 var savedCoversSection = document.querySelector(".saved-covers-section");
 
-// We've provided a few variables below
 var savedCovers = [];
 
-// Add your event listeners here 👇
 window.addEventListener("load", createRandom);
-
 showNewBtn.addEventListener("click", createRandom);
-
 makeOwnCoverBtn.addEventListener("click", clickedMakeOwnCover);
-
 viewSavedBtn.addEventListener("click", clickedViewSavedCover);
-
 homeBtn.addEventListener("click", clickedHomeButton);
-
 makeMyBookBtn.addEventListener("click", createNewCoverObj);
-
 saveCoverBtn.addEventListener("click", saveNewCover);
 
-
-// Create your event handlers and other functions here 👇
-
-// function for saving the cover
 function saveNewCover(event) {
   event.preventDefault();
   var currentCover = {
@@ -65,7 +46,6 @@ function saveNewCover(event) {
 
   var isDuplicate = false;
 
-  // check if the current cover already exists in the array
   for (var i = 0; i < savedCovers.length; i++) {
     if (
       savedCovers[i].coverImg === currentCover.coverImg &&
@@ -81,7 +61,6 @@ function saveNewCover(event) {
   }
 }
 
-// double click to delete
 viewSavedCoversPage.addEventListener("dblclick", (element) => {
   for (var i = 0; i < savedCovers.length; i++) {
     if (savedCovers[i].id == element.target.id) {
@@ -91,7 +70,6 @@ viewSavedCoversPage.addEventListener("dblclick", (element) => {
   clickedViewSavedCover();
 });
 
-// creating a new cover obj
 function createNewCoverObj(event) {
   event.preventDefault();
   var newUserCover = createCover(
@@ -113,7 +91,6 @@ function createNewCoverObj(event) {
   clickedHomeButton();
 }
 
-// toggling between buttons
 function showElementOrPage(element) {
   element.classList.remove("hidden");
 }
@@ -175,7 +152,6 @@ function clickedHomeButton() {
 
 }
 
-// creating random cover
 function createRandom() {
   var randIndexCovers = getRandomIndex(covers);
   var randIndexTitles = getRandomIndex(titles);
@@ -192,12 +168,10 @@ function createRandom() {
   mainCoverTagline2.innerText = randDesc2;
 }
 
-// creating a random number
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-// creating a book object
 function createCover(imgSrc, title, descriptor1, descriptor2) {
   var cover = {
     id: Date.now(),
