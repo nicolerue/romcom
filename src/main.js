@@ -48,6 +48,7 @@ viewSavedBtn.addEventListener("click", clickedViewSavedCover);
 homeBtn.addEventListener("click", clickedHomeButton);
 makeMyBookBtn.addEventListener("click", createNewCoverObj);
 saveCoverBtn.addEventListener("click", saveNewCover);
+viewSavedCoversPage.addEventListener("dblclick", deleteCover);
 
 //🟠EVENT HANDLERS
 function createRandom() {
@@ -158,14 +159,14 @@ function saveNewCover(event) {
   }
 }
 
-viewSavedCoversPage.addEventListener("dblclick", (element) => {
+function deleteCover(element) {
   for (var i = 0; i < savedCovers.length; i++) {
     if (savedCovers[i].id == element.target.id) {
       savedCovers.splice(i, 1);
     }
   }
   clickedViewSavedCover();
-});
+}
 
 //🟠OTHER FUNCTIONS
 
