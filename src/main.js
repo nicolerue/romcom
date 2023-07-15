@@ -201,7 +201,7 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
 }
 
 function zoomImg(event) {
-  if (event.target.className.includes('mini-cover')) {
+  if (event.target.className.includes('.mini-cover')) {
     event.target.classList.toggle('enlarge')
   }
 }
