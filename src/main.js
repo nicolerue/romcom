@@ -1,3 +1,12 @@
+//🟢PROJECT DELIVERABLES🟢//
+//Iteration 0 ✅
+//Iteration 1 ✅
+//Iteration 2 ✅
+//Iteration 3 ✅
+//Iteration 4 ✅
+//Extensions
+//// Provides an error message if not all fields are completed✅
+
 //🟠VARIABLES TARGETTING THE DOM
 
 //🔸Buttons in the nav bar
@@ -35,6 +44,9 @@ var titleInputField = document.querySelector(".user-title");
 var desc1InputField = document.querySelector(".user-desc1");
 var desc2InputField = document.querySelector(".user-desc2");
 
+//🔸 Error message on the Make Your Own Cover Page
+var errorMessage = document.querySelector(".error-message");
+
 //🟠GLOBAL VARIABLES
 
 var savedCovers = [];
@@ -48,8 +60,10 @@ viewSavedBtn.addEventListener("click", clickedViewSavedCover);
 homeBtn.addEventListener("click", clickedHomeButton);
 makeMyBookBtn.addEventListener("click", createNewCoverObj);
 saveCoverBtn.addEventListener("click", saveNewCover);
+viewSavedCoversPage.addEventListener("dblclick", deleteCover);
 
 //🟠EVENT HANDLERS
+
 function createRandom() {
   var randIndexCovers = getRandomIndex(covers);
   var randIndexTitles = getRandomIndex(titles);
@@ -118,17 +132,27 @@ function createNewCoverObj(event) {
     desc1InputField.value,
     desc2InputField.value
   );
-  covers.push(coverInputField.value);
-  titles.push(titleInputField.value);
-  descriptors.push(desc1InputField.value);
-  descriptors.push(desc2InputField.value);
+  if (
+    coverInputField.value === "" ||
+    titleInputField.value === "" ||
+    desc1InputField.value === "" ||
+    desc2InputField.value === ""
+  ) {
+    errorMessage.classList.remove("hidden-error");
+  } else {
+    errorMessage.classList.add("hidden-error");
+    covers.push(coverInputField.value);
+    titles.push(titleInputField.value);
+    descriptors.push(desc1InputField.value);
+    descriptors.push(desc2InputField.value);
 
-  mainCoverTitle.innerText = newUserCover.title;
-  mainCoverImg.src = newUserCover.coverImg;
-  mainCoverTagline1.innerText = newUserCover.tagline1;
-  mainCoverTagline2.innerText = newUserCover.tagline2;
+    mainCoverTitle.innerText = newUserCover.title;
+    mainCoverImg.src = newUserCover.coverImg;
+    mainCoverTagline1.innerText = newUserCover.tagline1;
+    mainCoverTagline2.innerText = newUserCover.tagline2;
 
-  clickedHomeButton();
+    clickedHomeButton();
+  }
 }
 
 function saveNewCover(event) {
@@ -158,14 +182,14 @@ function saveNewCover(event) {
   }
 }
 
-viewSavedCoversPage.addEventListener("dblclick", (element) => {
+function deleteCover(element) {
   for (var i = 0; i < savedCovers.length; i++) {
     if (savedCovers[i].id == element.target.id) {
       savedCovers.splice(i, 1);
     }
   }
   clickedViewSavedCover();
-});
+}
 
 //🟠OTHER FUNCTIONS
 
@@ -197,3 +221,5 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
   };
   return cover;
 }
+
+// EXTENSIONS
