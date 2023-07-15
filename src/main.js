@@ -24,25 +24,15 @@ var desc1InputField = document.querySelector(".user-desc1");
 var desc2InputField = document.querySelector(".user-desc2");
 
 var savedCoversSection = document.querySelector(".saved-covers-section");
-// We've provided a few variables below
+
 var savedCovers = [];
 
-// Add your event listeners here 👇
-
-window.addEventListener("DOMContentLoaded", function () {
-  createRandom();
-});
-
+window.addEventListener("load", createRandom);
 showNewBtn.addEventListener("click", createRandom);
-
 makeOwnCoverBtn.addEventListener("click", clickedMakeOwnCover);
-
 viewSavedBtn.addEventListener("click", clickedViewSavedCover);
-
 homeBtn.addEventListener("click", clickedHomeButton);
-
-makeMyBookBtn.addEventListener("click", createnewCoverObj);
-
+makeMyBookBtn.addEventListener("click", createNewCoverObj);
 saveCoverBtn.addEventListener("click", saveNewCover);
 
 
@@ -75,20 +65,9 @@ function saveNewCover(event) {
   }
 }
 
-for (var i = 0; i < savedCovers.length; i++) {
-  if (
-    savedCovers[i].coverImg === currentCover.coverImg &&
-    savedCovers[i].title == currentCover.title &&
-    savedCovers[i].tagline1 == currentCover.tagline1 &&
-    savedCovers[i].tagline2 == currentCover.tagline2
-  ) {
-    savedCovers.splice(i, 1);
-  }
-}
-
-viewSavedCoversPage.addEventListener("click", (e) => {
+viewSavedCoversPage.addEventListener("dblclick", (element) => {
   for (var i = 0; i < savedCovers.length; i++) {
-    if (savedCovers[i].id == e.target.id) {
+    if (savedCovers[i].id == element.target.id) {
       savedCovers.splice(i, 1);
     }
   }
@@ -115,7 +94,6 @@ function createnewCoverObj(event) {
 
   clickedHomeButton();
 }
-
 
 function showElementOrPage(element) {
   element.classList.remove("hidden");
@@ -152,8 +130,8 @@ function clickedViewSavedCover() {
 
   var newHTML = `<section class="saved-view saved-covers-section">`;
   for (var i = 0; i < savedCovers.length; i++) {
-    newHTML += `<section class="mini-cover">
-    <img class="mini-cover" src="${savedCovers[i].coverImg}" />
+    newHTML += `<section class="mini-cover mini-cover-icons">
+    <img class="mini-cover" src="${savedCovers[i].coverImg}" id=${savedCovers[i].id} />
     <h2 class="cover-title">${savedCovers[i].title}</h2>
     <h3 class="tagline">
       A tale of <span>${savedCovers[i].tagline1}</span> and
@@ -169,11 +147,11 @@ function clickedViewSavedCover() {
 
 function clickedHomeButton() {
   checkPage(homePage);
-  removeElementOrPage(homeBtn);
   showElementOrPage(showNewBtn);
   showElementOrPage(saveCoverBtn);
-  removeElementOrPage(makeOwnCoverPage);
+  removeElementOrPage(homeBtn);
   removeElementOrPage(viewSavedCoversPage);
+  removeElementOrPage(makeOwnCoverPage);
   removeElementOrPage(savedCoversSection);
   removeElementOrPage(miniDisplayIcons);
 }
